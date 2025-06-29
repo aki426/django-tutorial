@@ -7,4 +7,4 @@ def helloworldfunc(request):
 
 
 class HelloWorldClass(TemplateView):
-    template_name = "hello.html"
+    template_name = 'hello.html'
