@@ -487,3 +487,9 @@ d?? **今後の開発で追加できる機能:**
 - CI/CD パイプラインの構築
 
 これでDjangoを使ったWebサービス開発の基盤が完成しました！
+
+## 8. アプリの作成
+
+```bash
+(venv)$ python3 manage.py startapp helloworldapp
+```
