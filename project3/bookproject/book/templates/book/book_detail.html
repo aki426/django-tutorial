@@ -1,3 +1,14 @@
-{{ object.category}}
-{{ object.title }}
-{{ object.text }}
+{% extends 'base.html' %}
+
+{% block title %}書籍詳細{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h5 class="card-header">{{ object.title }}</h5>
+    <div class="card-body">
+        <p class="card-text">{{ object.text }}</p>
+        <a href="#" class="btn btn-primary">ボタン</a>
+        <h6 class="card-title">{{ object.category }}</h6>
+    </div>
+</div>
+{% endblock content %}
