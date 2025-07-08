@@ -1,6 +1,11 @@
 from django.db import models
 
-CATEGORY = (("business", "ビジネス"), ("life", "生活"), ("other", "その他"))
+CATEGORY = (
+    ("business", "ビジネス"),
+    ("life", "生活"),
+    ("literature", "文学"),
+    ("other", "その他"),
+)
 
 
 class Book(models.Model):
