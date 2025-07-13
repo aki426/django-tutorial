@@ -10,6 +10,10 @@ from django.views.generic import (
 from .models import Book
 
 
+def index_view(request):
+    return render(request, "book/index.html", {"somedata": 100})
+
+
 class ListBookView(ListView):
     template_name = "book/book_list.html"
     model = Book
