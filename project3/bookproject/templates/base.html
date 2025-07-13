@@ -19,8 +19,18 @@
                 <li class="nav-item">
                     <a class="nav-link mx-3" href="{% url 'create-book' %}">書籍登録</a>
                 </li>
+                {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link mx-3" href="{% url 'logout' %}">ログアウト</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link mx-3" href="{% url 'login' %}">ログイン</a>
+                </li>
+                {% endif %}
             </ul>
         </div>
+
     </nav>
     <div class="p-4">
         <h1>{% block h1 %}{% endblock %}</h1>
