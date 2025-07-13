@@ -11,7 +11,8 @@ from .models import Book
 
 
 def index_view(request):
-    return render(request, "book/index.html", {"somedata": 100})
+    object_list = Book.objects.all().order_by("category")
+    return render(request, "book/index.html", {"object_list": object_list})
 
 
 class ListBookView(ListView):
