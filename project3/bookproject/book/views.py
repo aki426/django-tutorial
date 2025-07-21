@@ -49,3 +49,10 @@ class CreateReviewView(CreateView):
     model = Review
     fields = ("book", "title", "text", "rate")
     template_name = "book/review_form.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["book"] = Book.objects.get(pk = self.kwargs["book_id"])
+        print(self.kwargs)
+        print(context)
+        return context
