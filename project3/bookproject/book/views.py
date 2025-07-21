@@ -7,7 +7,7 @@ from django.views.generic import (
     DeleteView,
     UpdateView,
 )
-from .models import Book
+from .models import Book, Review
 
 
 def index_view(request):
@@ -43,3 +43,9 @@ class UpdateBookView(UpdateView):
     model = Book
     fields = ("title", "text", "category")
     success_url = reverse_lazy("list-book")
+
+
+class CreateReviewView(CreateView):
+    model = Review
+    fields = ("book", "title", "text", "rate")
+    template_name = "book/review_form.html"
