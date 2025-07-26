@@ -7,6 +7,7 @@ from django.views.generic import (
     DeleteView,
     UpdateView,
 )
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Book, Review
 
 
@@ -15,37 +16,39 @@ def index_view(request):
     return render(request, "book/index.html", {"object_list": object_list})
 
 
-class ListBookView(ListView):
+class ListBookView(
+    LoginRequiredMixin, ListView
+):  # Mixinは先に実行する必要があるため継承の中でも優先順位が高い。
     template_name = "book/book_list.html"
     model = Book
 
 
-class DetailBookView(DetailView):
+class DetailBookView(LoginRequiredMixin, DetailView):
     template_name = "book/book_detail.html"
     model = Book
 
 
-class CreateBookView(CreateView):
+class CreateBookView(LoginRequiredMixin, CreateView):
     template_name = "book/book_create.html"
     model = Book
     fields = ("title", "text", "category", "thumbnail")
     success_url = reverse_lazy("list-book")
 
 
-class DeleteBookView(DeleteView):
+class DeleteBookView(LoginRequiredMixin, DeleteView):
     template_name = "book/book_confirm_delete.html"
     model = Book
     success_url = reverse_lazy("list-book")
 
 
-class UpdateBookView(UpdateView):
+class UpdateBookView(LoginRequiredMixin, UpdateView):
     template_name = "book/book_update.html"
     model = Book
     fields = ("title", "text", "category", "thumbnail")
     success_url = reverse_lazy("list-book")
 
 
-class CreateReviewView(CreateView):
+class CreateReviewView(LoginRequiredMixin, CreateView):
     model = Review
     fields = ("book", "title", "text", "rate")
     template_name = "book/review_form.html"
